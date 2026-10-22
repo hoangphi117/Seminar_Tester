@@ -4,8 +4,8 @@
 | :--------- | :----------------- |
 | **Long**   | Ứng dụng AI        |
 | **Phú Lê** | Userbrain, slide   |
-| **Phi**    | Uxreality, slide   |
-| **36**     | UXTweak, slide     |
+| **Phi**    | UXTweak, slide     |
+| **36**     | Uxreality, slide   |
 | **Huy**    | forms, sheet       |
 
 # Đặc tả Yêu cầu Hệ thống (System Requirements Specification)
