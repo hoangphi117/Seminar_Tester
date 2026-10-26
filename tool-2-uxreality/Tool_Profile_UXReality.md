@@ -34,7 +34,7 @@ UXReality có thể hỗ trợ nhóm điều tra các câu hỏi như:
 Quy trình nghiên cứu khái quát:
 
 1. **Tạo study:** xác định website/app/prototype và mục tiêu nghiên cứu.
-2. **Chuẩn bị môi trường:** cung cấp URL có thể truy cập, chọn thiết bị/phương thức phù hợp và kiểm tra quyền truy cập.
+2. **Chuẩn bị môi trường:** cung cấp URL có thể truy cập (phiên từ xa dùng Cloudflare Quick Tunnel), chọn thiết bị/phương thức phù hợp và kiểm tra quyền truy cập.
 3. **Thiết kế task:** viết nhiệm vụ theo mục tiêu người dùng, tránh chỉ dẫn người tham gia bấm chính xác vào đâu.
 4. **Thiết lập study:** nhập URL, nhiệm vụ, câu hỏi và các tuỳ chọn ghi nhận mà tài khoản đang hỗ trợ.
 5. **Mời/người tham gia truy cập:** làm theo hướng dẫn của phiên bản công cụ; trên máy tính có thể cần extension, còn phương thức mobile có thể khác.
@@ -110,6 +110,8 @@ Các hàng dưới đây là **khả năng cần kiểm chứng**, không phải
 | Eye tracking / visual attention / heatmap | Hỗ trợ xem khu vực chú ý ở trang sản phẩm, giỏ hàng, dashboard hoặc bảng dữ liệu | Chưa xác minh trực tiếp; phụ thuộc phương thức và thiết bị |
 | Facial coding | Chỉ sử dụng nếu phù hợp, được hỗ trợ và có đồng thuận rõ ràng | Chưa xác minh trực tiếp; không bắt buộc cho phạm vi seminar |
 | Survey / câu hỏi mở | Thu thập mức khó/dễ và phản hồi sau task | Chưa xác minh trực tiếp |
+
+> **Ghi chú về câu hỏi sau task trong project này:** dù UXReality có thể hỗ trợ câu hỏi mở, bộ câu hỏi sau task của project chỉ dùng **Likert 1–5, Multiple Choice và Single Choice** (không dùng câu hỏi mở) để dễ tổng hợp trung bình giữa các task; chi tiết định tính được đối chiếu từ think-aloud trong recording ở bước phân tích.
 | Dashboard / export | Lưu dữ liệu cần phân tích và báo cáo | Chưa xác minh loại export trong tài khoản |
 | Methodology/custom question | Tạo câu hỏi và cấu hình nghiên cứu phù hợp | Chưa xác minh trực tiếp |
 | AI-generated insight | Chỉ sử dụng nếu là tính năng có thật trong cấu hình hiện hành; không mặc định | Chưa xác minh trực tiếp |
@@ -193,7 +195,7 @@ User testing cho biết người dùng thực sự làm gì; heuristic evaluatio
 
 ### 9.2. Hạn chế kỹ thuật
 
-- `localhost` trên máy phát triển không dùng trực tiếp cho người tham gia từ xa. Cần môi trường staging có thể truy cập, an toàn và có dữ liệu giả lập.
+- `localhost` trên máy phát triển không dùng trực tiếp cho người tham gia từ xa. Phiên từ xa dùng **Cloudflare Quick Tunnel** (`cloudflared tunnel --url ...`) để phơi URL tạm với dữ liệu giả lập; URL đổi mỗi lần khởi động lại tunnel nên phải bảo đảm tunnel sống suốt phiên đo và ghi URL/cấu hình vào log phiên (không nằm trong task specification).
 - Admin task có thể thay đổi dữ liệu. Chỉ dùng tài khoản Admin test và dữ liệu sandbox; có kế hoạch reset sau phiên.
 - Study/task time limits, thiết bị tương thích, export và quyền camera/microphone phải được kiểm tra bằng pilot.
 - Không tuyên bố chức năng tự động hóa chưa xác minh. Nếu UXReality không phù hợp với một yêu cầu seminar, ghi limitation và trình bày cách bù thủ công hoặc cần công cụ bổ trợ.

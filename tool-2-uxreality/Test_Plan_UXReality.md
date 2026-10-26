@@ -161,11 +161,11 @@ Nếu nguồn lực hạn chế, chạy pilot trước rồi ưu tiên các task
 
 ### 8.1. Môi trường
 
-- Customer Web mặc định trong README: `http://localhost:5173`.
-- Admin Web mặc định trong README: `http://localhost:5174`.
-- Backend API mặc định: `http://localhost:3000`.
-- `localhost` chỉ có thể truy cập từ máy tương ứng; kiểm thử từ xa cần staging/tunnel an toàn hoặc môi trường demo có thể truy cập được. Không mở máy phát triển ra Internet nếu chưa cân nhắc bảo mật.
-- Ghi lại OS, trình duyệt, viewport, thiết bị, mạng, URL, commit/build hoặc version EShop và ngày chạy.
+- Môi trường kiểm thử được expose ra Internet bằng **Cloudflare Quick Tunnel** (`cloudflared tunnel --url ...`) để người tham gia từ xa truy cập được.
+- Quick Tunnel sinh URL tạm và **đổi mỗi lần khởi động lại tunnel**. Phải bảo đảm tunnel còn sống xuyên suốt phiên đo; nếu URL đổi giữa chừng thì các phiên đó không cùng điều kiện môi trường và phải được xử lý theo quy tắc `Invalid` đã định nghĩa.
+- Vì Quick Tunnel là đường vào công khai, môi trường phải chỉ chứa dữ liệu giả lập, dùng tài khoản test riêng và không thực hiện thao tác nguy hiểm. Không expose backend API trực tiếp ra ngoài nếu chưa kiểm soát được phạm vi.
+- URL, commit/build hoặc version EShop, OS, trình duyệt, viewport, thiết bị và mạng được ghi ở **log phiên** và Analysis Package, không nằm trong task specification; mỗi task specification chỉ ghi điều kiện dữ liệu, tài khoản, trạng thái ban đầu và cách reset.
+- Môi trường phải được xác minh trước pilot: trang tải được từ thiết bị participant, seed/fixture nạp đúng và dữ liệu đọc được.
 
 ### 8.2. Tài khoản và dữ liệu
 
@@ -262,7 +262,7 @@ Nielsen’s heuristics dùng mã N1–N10 theo tên chuẩn ở mục 3.2. Chỉ
 ### Giai đoạn B — Chuẩn bị nghiên cứu
 
 1. Chốt 8 task cốt lõi và các FR tương ứng.
-2. Chuẩn bị staging, tài khoản, dữ liệu và cách reset.
+2. Chuẩn bị môi trường kiểm thử (Quick Tunnel cho phiên từ xa, seed/fixture, URL ghi ở log phiên), tài khoản, dữ liệu và cách reset.
 3. Viết lời dẫn trung lập, post-task question và success criteria.
 4. Tạo study riêng cho từng task nếu nền tảng yêu cầu.
 5. Lập trước bảng mapping P/N, tránh sửa tiêu chí sau khi thấy kết quả chỉ để hợp thức hóa phát hiện.
@@ -272,7 +272,7 @@ Nielsen’s heuristics dùng mã N1–N10 theo tên chuẩn ở mục 3.2. Chỉ
 ### Giai đoạn C — Pilot
 
 1. Chạy ít nhất một phiên thử cho mỗi loại môi trường (Customer và Admin), ưu tiên một task ngắn ở mỗi vai trò.
-2. Kiểm tra URL/đăng nhập, dữ liệu ban đầu, chất lượng ghi hình, khả năng xác định outcome và thời lượng.
+2. Kiểm tra môi trường kiểm thử (URL Quick Tunnel còn hoạt động và truy cập được), đăng nhập, dữ liệu ban đầu, chất lượng ghi hình, khả năng xác định outcome và thời lượng.
 3. Ghi lỗi cấu hình, điểm câu chữ gây dẫn dắt hoặc task vượt thời lượng.
 4. Hiệu chỉnh task và ghi lý do thay đổi.
 
@@ -312,8 +312,8 @@ Nielsen’s heuristics dùng mã N1–N10 theo tên chuẩn ở mục 3.2. Chỉ
 
 - Không dùng kết quả pilot như kết quả chính thức trừ khi ghi rõ là pilot.
 - Không xóa phiên có task fail nếu không có lỗi kỹ thuật; thất bại task có thể là bằng chứng usability.
-- Chỉ loại phiên khi có lý do xác định trước: URL sai, mất kết nối nghiêm trọng, recording không dùng được, người tham gia không thực hiện task hoặc điều kiện test sai.
-- Ghi mọi lần thay đổi task, URL, dataset hoặc cấu hình giữa các phiên.
+- Chỉ loại phiên khi có lý do xác định trước: điều kiện môi trường kiểm thử sai (URL Quick Tunnel chết/đổi, trang không tải), mất kết nối nghiêm trọng, recording không dùng được, người tham gia không thực hiện task hoặc điều kiện test sai.
+- Ghi mọi lần thay đổi task, môi trường/URL, dataset hoặc cấu hình giữa các phiên.
 - Không so sánh thời gian giữa Customer task và Admin task như cùng một thước đo nếu độ phức tạp khác nhau.
 - Tách observed fact, participant quote, interpretation và hypothesized cause.
 - Đối với heatmap/eye-tracking/facial coding, nêu rõ công cụ/thiết bị, dữ liệu thiếu và giới hạn diễn giải.
@@ -331,7 +331,7 @@ Nielsen’s heuristics dùng mã N1–N10 theo tên chuẩn ở mục 3.2. Chỉ
 
 | Rủi ro | Tác động | Giảm thiểu |
 |---|---|---|
-| UXReality không hỗ trợ đầy đủ một trong hai website/thiết bị | Không thực hiện được toàn bộ scope | Pilot sớm; thử staging/desktop; báo GV nếu cần đổi phương pháp |
+| UXReality không hỗ trợ đầy đủ một trong hai website/thiết bị | Không thực hiện được toàn bộ scope | Pilot sớm; thử môi trường từ xa/desktop; báo GV nếu cần đổi phương pháp |
 | Task vượt giới hạn thời gian | Người dùng bỏ dở; dữ liệu không so sánh được | Rút gọn mục tiêu, chuẩn bị trạng thái đầu vào, chia task thành study riêng |
 | Admin task thay đổi dữ liệu | Ảnh hưởng các phiên sau | Dataset sandbox và bước reset trước/sau |
 | Quá nhiều FR | Thiếu thời gian chạy đủ phiên | Giữ 8 task P1, chỉ mở rộng nếu có năng lực |

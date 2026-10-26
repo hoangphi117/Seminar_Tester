@@ -1,6 +1,6 @@
 # Task Specification — UXReality / EShop (Customer Web + Admin Web)
 
-> **Cách dùng:** Copy phần “Task Card Template” cho từng task. Danh mục dưới đây là đề xuất ban đầu; phải rà soát bằng pilot và không coi là kết quả kiểm thử.
+> **Cách dùng:** Copy phần “Task Card Template” cho từng task. Danh mục dưới đây là đề xuất ban đầu; phải rà soát bằng pilot và không coi là kết quả kiểm thử. Thông tin môi trường/URL/phiên bản build và kết quả pilot được ghi ở log phiên, Analysis Package hoặc Raw Evidence theo Test Plan — **không** nằm trong task specification.
 
 ## 1. Danh mục task dự kiến
 
@@ -8,7 +8,7 @@
 
 | Task ID | FR | User task (lời giao nhiệm vụ trung lập) | Điều kiện khởi đầu | Tiêu chí thành công chính | Principles / Heuristics dự kiến |
 |---|---|---|---|---|---|
-| C-01 | FR-05 | “Hãy tìm sản phẩm **[X]** và cho biết giá đang hiển thị.” | Trang Customer Web truy cập được; sản phẩm X tồn tại; task bắt đầu ở trang chủ | Tìm đúng sản phẩm và chỉ đúng giá | P2/P3/P7; N2/N6/N7/N8 |
+| C-01 | FR-05 | “Hãy tìm sản phẩm **[X]** và cho biết giá đang hiển thị.” | Dữ liệu seed có sản phẩm X; task bắt đầu ở trang chủ | Tìm đúng sản phẩm và chỉ đúng giá | P2/P3/P7; N2/N6/N7/N8 |
 | C-02 | FR-06, FR-24 | “Bạn muốn mua 2 đơn vị sản phẩm **[X]**. Hãy thêm sản phẩm vào giỏ và cho biết điều gì khiến bạn chắc rằng lựa chọn đã được ghi nhận.” | Product X có sẵn; trạng thái người dùng và giỏ được xác định trước | Thêm đúng sản phẩm/số lượng; người dùng xác định được phản hồi/trạng thái giỏ | P2/P5/P8/P10; N1/N4/N5/N6 |
 | C-03 | FR-07, FR-23, FR-24 | “Trong giỏ hàng đã chuẩn bị, hãy đổi số lượng sản phẩm **[X]** thành 3 và xóa sản phẩm **[Y]**. Hãy cho biết bạn hiểu kết quả như thế nào.” | Giỏ có X và Y; reset trước mỗi session | Số lượng X hiển thị là 3; Y được xóa theo đúng luồng xác nhận; người dùng hiểu trạng thái kết quả | P4/P5/P8; N1/N3/N4/N5/N9 |
 | C-04 | FR-08, FR-09 | “Với đơn hàng đang chuẩn bị, hãy áp dụng mã **SAVE10** và cho biết số tiền sau giảm giá trước khi xác nhận đặt hàng.” | User đã đăng nhập; giỏ đạt ngưỡng coupon; coupon hoạt động/chưa hết lượt; không cần hoàn tất đặt đơn | Mã được nhập/áp dụng hoặc có phản hồi rõ; người dùng xác định đúng số tiền cuối cùng theo giao diện | P2/P5/P8/P10; N1/N2/N5/N9 |
@@ -49,7 +49,8 @@
 
 ### 2.3. Điều kiện ban đầu (Preconditions)
 
-- URL/build: `[điền]`
+> Thông tin về môi trường, URL và phiên bản build **không** đưa vào task specification; ghi ở log phiên/Analysis Package. Phiên từ xa dùng Cloudflare Quick Tunnel (URL tạm, đổi mỗi lần khởi động tunnel). Chỉ ghi các điều kiện dữ liệu, tài khoản, trạng thái và thao tác reset cần thiết cho phiên.
+
 - Trạng thái đăng nhập: `[điền]`
 - Dữ liệu cần có: `[product/order/cart/coupon/CSV]`
 - Trạng thái ban đầu: `[điền]`
@@ -74,35 +75,89 @@
 | Completion time | `[start/end rule]` | `[tool/manual]` | `[điền]` |
 | Observable error count | `[loại sai thao tác được tính]` | `[recording/observer]` | `[điền]` |
 | Assistance count | `[định nghĩa nếu có moderator]` | `[moderator log]` | `[điền]` |
-| Perceived difficulty | `[câu hỏi thang 1–5]` | `[survey]` | `[điền]` |
+| Perceived difficulty | `[câu hỏi `QD1` ở mục 6]` | `[survey]` | `[điền]` |
 | Additional data | `[click/scroll/heatmap/etc. nếu thực sự có]` | `[tool]` | `[điền]` |
 
-### 2.6. Checkpoints quan sát
+### 2.6. Câu hỏi sau task
 
-> Checkpoint ở đây là tiêu chí mà nhóm sẽ đối chiếu; không mặc định là automated assertion do UXReality thực hiện.
+> Hỏi ngay sau khi người tham gia báo đã xong task và trước khi trao đổi thêm.
+> Không nhắc lại đáp án. Thang Likert dùng thống nhất cho mọi task:
+> 1 = Hoàn toàn không đồng ý · 2 = Không đồng ý · 3 = Trung lật ·
+> 4 = Đồng ý · 5 = Hoàn toàn đồng ý.
+>
+> Câu hỏi mã `Q01`–`Q12` giữ nguyên cách diễn đạt như trong
+> `UXReality_UX_Metrics_Heuristics_Template.md` để gộp được kết quả giữa các
+> task. Bộ câu hỏi sau task **không dùng câu hỏi mở** để dễ tổng hợp; chủ yếu
+> dùng Likert, Multiple Choice và Single Choice. Mỗi task chọn câu hỏi như sau:
+>
+> - Luôn có `QD1` (độ khó), `QD2` (mức tự tin về kết quả cuối — phục vụ tiêu
+>   chí SC-02 của task), `Q11` (multi-choice) và `Q12` (single-choice).
+> - Chọn câu Likert `Q01`–`Q10` có nguyên tắc (P) **hoặc** heuristic (N) nằm
+>   trong bộ P/N của task (xem bảng ánh xạ bên dưới), tối đa 4–5 câu/task, ưu
+>   tiên câu thuộc heuristic trọng tâm.
+> - Bỏ qua câu chỉ phát huy khi có tình huống tương ứng mà task không tạo ra
+>   (ví dụ `Q09` cần có lỗi, `Q10` cần có hướng dẫn) trừ khi task có gắn mã đó.
+>
+> Khi cần thu lời nói xác minh cho SC-02 mà không dùng câu mở, dùng `QD2` (thang
+> 1–5) để thu mức tự tin; các chi tiết định tính được đối chiếu từ think-aloud
+> trong recording ở bước phân tích.
 
-| Checkpoint ID | Điều muốn quan sát | Gắn với principle | Heuristic | Bằng chứng cần ghi |
+| Mã | Loại | Câu hỏi | Nguyên tắc | Heuristic |
 |---|---|---|---|---|
-| CP-01 | `[điền]` | `[P#]` | `[N#]` | `[timestamp / screenshot / quote]` |
-| CP-02 | `[điền]` | `[P#]` | `[N#]` | `[timestamp / screenshot / quote]` |
+| `QD1` | Likert 1–5 | Mức độ khó của nhiệm vụ từ 1 (rất dễ) đến 5 (rất khó) | — | — |
+| `QD2` | Likert 1–5 | Tôi tự tin rằng kết quả cuối của nhiệm vụ đã được hệ thống ghi nhận đúng như tôi mong muốn. | P5 | N1 |
+| `Qxx` | Likert 1–5 | `[trích lại nguyên văn từ UX Metrics Template]` | `[P#]` | `[N#]` |
+| `Q11` | Multiple Choice | Bạn gặp những vấn đề nào khi thực hiện tác vụ? *(Có thể chọn nhiều đáp án.)* | Tất cả | N1–N10 |
+| `Q12` | Single Choice | Khía cạnh nào ảnh hưởng nhiều nhất đến trải nghiệm của bạn trong phiên kiểm thử? | Tất cả | N1–N10 |
 
-### 2.7. Câu hỏi sau task
+#### Bảng ánh xạ câu hỏi Likert với nguyên tắc và heuristic
 
-1. Mức độ khó của nhiệm vụ từ 1 (rất dễ) đến 5 (rất khó): `[ ]`
-2. Phần nào khiến bạn phải dừng lại hoặc không chắc chắn? `[câu hỏi mở]`
-3. Sau thao tác cuối, bạn có chắc kết quả đã được ghi nhận không? Vì sao? `[câu hỏi mở]`
+| Mã | Nguyên tắc chính | Heuristic | Nội dung câu hỏi |
+|---|---|---|---|
+| Q01 | P5 | N1 | Trạng thái và phản hồi của hệ thống |
+| Q02 | P2 | N2 | Ngôn ngữ và tính dễ hiểu |
+| Q03 | — | N3 | Quyền kiểm soát |
+| Q04 | P4 | N4 | Tính nhất quán |
+| Q05 | P8 | N5 | Ngăn ngừa lỗi |
+| Q06 | P3 | N6 | Nhận diện thay vì ghi nhớ |
+| Q07 | P7 | N7 | Hiệu quả thao tác |
+| Q08 | P3, P6 | N8 | Tính tối giản và tập trung |
+| Q09 | P8 | N9 | Khôi phục sau lỗi |
+| Q10 | P5 | N10 | Trợ giúp và hướng dẫn |
 
-### 2.8. Bằng chứng và quan sát
+#### Lựa chọn cho `Q11` (Multiple Choice)
 
-| Participant ID | Session ID | Outcome | Time | Errors | Evidence/timestamp | Observation ID | P code | N code | Notes |
-|---|---|---|---:|---:|---|---|---|---|---|
-| `[C-P01/A-P01]` | `[ID]` | `[ ]` | `[ ]` | `[ ]` | `[ID @ timestamp]` | `[OBS-ID]` | `[P#]` | `[N#]` | `[điền]` |
+*Giữ nguyên danh sách lựa chọn giống Metrics Template để gộp dữ liệu giữa các task.*
 
-### 2.9. Kết quả pilot và quyết định
+- Không rõ hệ thống đang xử lý hay đã hoàn tất
+- Không hiểu nhãn, biểu tượng hoặc thuật ngữ
+- Khó quay lại, hủy hoặc sửa thao tác
+- Thành phần hoặc hành vi không nhất quán
+- Khó biết cách tránh lỗi
+- Phải ghi nhớ thông tin từ bước trước
+- Có quá nhiều bước hoặc thao tác
+- Giao diện có quá nhiều thông tin gây nhiễu
+- Không hiểu thông báo lỗi hoặc cách khắc phục
+- Không tìm được hướng dẫn
+- Không gặp vấn đề nào
+- Khác
 
-- Task chạy trong thời lượng cho phép? `[Yes/No/Not tested]`
-- Người tham gia hiểu lời giao nhiệm vụ? `[điền]`
-- Cấu hình ghi nhận hoạt động? `[điền]`
-- Những thay đổi sau pilot và lý do: `[điền]`
-- Reviewer: `[điền]`
-- Ngày/phiên bản: `[điền]`
+#### Lựa chọn cho `Q12` (Single Choice)
+
+- Trạng thái / phản hồi
+- Ngôn ngữ / tính dễ hiểu
+- Quyền kiểm soát
+- Tính nhất quán
+- Ngăn ngừa lỗi
+- Khả năng nhận diện thông tin
+- Hiệu quả thao tác
+- Tính tối giản
+- Khôi phục lỗi
+- Trợ giúp / hướng dẫn
+- Không có vấn đề đáng kể
+- Khác
+
+> **Ghi chú:** Bằng chứng thô và nhật ký quan sát ở `## Bằng chứng và quan sát`
+> (trước đây) được quản lý trong Analysis Package / Raw Evidence theo Test Plan,
+> không nằm trong task specification. Kết quả pilot và quyết định go/no-go được
+> ghi trong pilot log riêng, không ở trong task specification.
