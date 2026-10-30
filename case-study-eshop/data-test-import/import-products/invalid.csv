@@ -1,0 +1,6 @@
+name,price,description,imageUrl,category_id
+TEST_INVALID_01 Dòng hợp lệ,120000,Dòng hợp lệ để kiểm tra rollback,https://placehold.co/300,3
+,200000,Dòng thiếu tên sản phẩm,https://placehold.co/300,3
+TEST_INVALID_03 Giá âm,-50000,Dòng có giá âm,https://placehold.co/300,3
+TEST_INVALID_04 Giá bằng không,0,Dòng có giá bằng không,https://placehold.co/300,3
+TEST_INVALID_05 Giá không phải số,abc,Dòng có giá dạng chữ,https://placehold.co/300,3
