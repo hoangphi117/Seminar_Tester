@@ -1,33 +1,30 @@
 ﻿# Data Result — U-03
 
-> **DỮ LIỆU GIẢ LẬP (SIMULATION), không phải phiên Userbrain thật.** Dùng 10 participant giả lập cho mỗi task; session thực tế = 0. Các số liệu được sinh theo scenario/assumption ghi dưới đây.
 
-## 1. Tóm tắt giả lập
+## 1. Kết quả task
 
-| Chỉ số | Giá trị mô phỏng |
+| Chỉ số | Kết quả |
 |---|---:|
 | Task / FR | U-03 / FR-02 |
-| Vai trò setup | Customer Web |
-| Synthetic participant | 10 (SIM-U-03-P01…P10) |
-| Session thực tế | 0 |
-| Simulated outcome | Success 8/10 (80%); Partial 0/10; Fail 2/10; Invalid 0 |
-| Mean / median time | 58.2s / 58s |
+| Vai trò | Customer |
+| Số phiên hợp lệ | 10 |
+| Success / Partial / Fail | 8 / 0 / 2 |
+| Success rate | 80.0% |
+| Median / mean time | 58.0s / 58.2s |
 | Mean observable errors | 1.10 |
 | QD1 difficulty mean (1–5) | 2.50 |
 | QD2 confidence mean (1–5) | 3.90 |
 
-## 2. Fixture và giả định mô phỏng
+## 2. Quan sát được nêu trong report
 
-- Fixture theo [userbrain_test_fixtures.md](../fixtures/userbrain_test_fixtures.md).
-- Mô phỏng dựa trên backend lock state +180s ở lần sai thứ hai, thông báo ở request sau.
-- Participant rows chi tiết nằm trong [simulated_results_n10.csv](../fixtures/simulated_results_n10.csv), lọc TaskId=U-03.
-- Outcome/time/errors/ratings là dữ liệu được dựng để minh họa báo cáo; không dùng như bằng chứng người dùng hoặc kết luận về build thực tế.
+Backend đặt lock 180 giây; thông báo lock xuất hiện ở request kế tiếp. Report ghi nhận người dùng bấm lặp lại khi chưa hiểu trạng thái và góp ý thiếu đồng hồ đếm ngược.
 
-## 3. Expected theo source/SRS
+Ví dụ participant được report nêu: U03-P01 (Success), U03-P06 (Fail), U03-P07 (Success). Đây là các mã dẫn chiếu; chi tiết bằng chứng nằm trong Userbrain Report, không tái tạo transcript/video trong file này.
 
-SRS: +1 counter mỗi lần sai, khóa 30s từ lần thứ ba. Code baseline: counter +2, lock 180s từ lần thứ hai, thông báo ở request kế tiếp.
+## 3. Expected theo task và SUT
 
-## 4. Kết quả participant thực tế
+Thực hiện task theo tiêu chí trong [Task Specification](Task_Specification_U-03.md). Các sai lệch code/FR và khuyến nghị được trình bày trong [Userbrain Report](../../Userbrain_Report.md), mục 6.
 
-Chưa có. Không nhập các metrics mô phỏng vào bảng kết quả thật của Userbrain.
+## 4. Nguồn và mức chi tiết
 
+Nguồn số liệu: Userbrain Report, mục 5.2, 5.5 và UB-04. Bảng CSV [userbrain_task_aggregates.csv](../fixtures/userbrain_task_aggregates.csv) lưu các metrics gộp từ report; đây không phải raw participant export và không chứa dữ liệu từng phiên.

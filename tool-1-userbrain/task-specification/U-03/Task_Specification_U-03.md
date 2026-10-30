@@ -1,6 +1,6 @@
 ﻿# U-03 — Nhận biết khóa tài khoản sau nhiều lần đăng nhập sai
 
-> Userbrain / EShop — đặc tả trước pilot; không phải kết quả participant.
+
 
 - **ID / FR:** U-03 / FR-02
 - **Vai trò:** Customer Web, tài khoản test đã provision sẵn
@@ -20,5 +20,5 @@ FR-02 yêu cầu bộ đếm tăng đúng 1 sau mỗi lần sai; khóa sau ít n
 
 ## Thu thập dữ liệu
 
-Ghi số lần nhập sai đến khi thông báo khóa xuất hiện, nội dung thông báo, cách participant hiểu thời gian chờ, thời lượng task và observable errors. Không thử đăng nhập đúng trong thời gian khóa. Kết quả participant để N/A cho tới khi có recording.
+Ghi số lần nhập sai đến khi thông báo khóa xuất hiện, nội dung thông báo, cách participant hiểu thời gian chờ, thời lượng task và observable errors. Không thử đăng nhập đúng trong thời gian khóa. Kết quả participant được tổng hợp tại file Task_Data_Result và Userbrain Report.
 

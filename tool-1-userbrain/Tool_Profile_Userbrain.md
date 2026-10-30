@@ -30,7 +30,7 @@ Userbrain chỉ nhận các mục tiêu chưa được giao cho UXReality/UXTwea
 - Userbrain ghi nhận video màn hình/âm thanh theo cấu hình nghiên cứu và cung cấp công cụ review; nhóm kiểm tra video/câu trả lời để mã hóa outcome và finding.
 - AI/transcript/automated report là trợ giúp tìm và tóm tắt, không thay thế xác minh evidence hoặc quyết định severity.
 - Task success, completion time, observable errors, assistance, mapping P/N và kết luận theo nhóm là phần nhóm tự tổng hợp trừ khi pilot xác minh một chỉ số tự động cụ thể.
-- Bản ghi có thể chứa tiếng nói, thông tin nhận dạng hoặc dữ liệu trên màn hình. Chỉ dùng dữ liệu giả lập, thông báo recording và đồng thuận, hạn chế quyền truy cập.
+- Bản ghi có thể chứa tiếng nói, thông tin nhận dạng hoặc dữ liệu trên màn hình. Với participant thật, cần thông báo recording, lấy đồng thuận, hạn chế quyền truy cập và không commit video, thông tin định danh hoặc dữ liệu nhạy cảm vào repository.
 - Quick Tunnel URL thay đổi và phải còn hoạt động trong suốt phiên. Ghi URL/build/configuration trong log phiên riêng, không commit credential hoặc URL nhạy cảm.
 
 ## 5. Nguồn chính thức

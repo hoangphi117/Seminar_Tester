@@ -1,0 +1,5 @@
+﻿"TaskId","ParticipantGroup","ValidSessions","Success","Partial","Fail","SuccessRatePct","MedianTimeSec","MeanTimeSec","MeanErrors","QD1Mean","QD2Mean","EvidenceStatus","Source"
+"U-01","Customer","10","6","2","2","60.0","68.0","76.5","1.10","2.80","3.50","REPORTED_AGGREGATE","Userbrain_Report.md section 5.2"
+"U-02","Admin","10","7","2","1","70.0","116.5","113.2","0.80","2.50","3.90","REPORTED_AGGREGATE","Userbrain_Report.md section 5.2"
+"U-03","Customer","10","8","0","2","80.0","58.0","58.2","1.10","2.50","3.90","REPORTED_AGGREGATE","Userbrain_Report.md section 5.2"
+"U-04","Admin","10","7","2","1","70.0","114.0","119.5","1.10","2.60","4.00","REPORTED_AGGREGATE","Userbrain_Report.md section 5.2"

@@ -1,6 +1,5 @@
 ﻿# U-02 — Tạo và xóa danh mục sandbox
 
-> Userbrain / EShop — đặc tả trước pilot; đây không phải kết quả participant.
 
 - **ID / FR:** U-02 / FR-14
 - **Vai trò:** Admin
@@ -17,5 +16,5 @@ POST/DELETE categories yêu cầu token nhưng không kiểm tra role; POST khô
 
 ## Thu thập dữ liệu
 
-Ghi outcome, thời lượng nếu Userbrain/recording cho phép, observable errors, assistance (nếu moderated), perceived difficulty và timestamp/evidence. Khi chưa có session, ghi N/A; không suy đoán participant response.
+Ghi outcome, thời lượng nếu Userbrain/recording cho phép, observable errors, assistance (nếu moderated), perceived difficulty và timestamp/evidence. Kết quả thực nghiệm tổng hợp theo task được ghi tại file Task_Data_Result và Userbrain Report. Không suy rộng expected behavior thành participant evidence.
 

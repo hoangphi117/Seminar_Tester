@@ -1,6 +1,5 @@
 ﻿# Task Specification — Userbrain / EShop
 
-> Phạm vi riêng Userbrain: task web/API-facing của EShop không được giao cho UXReality hoặc UXTweak. Trạng thái trước pilot; không phải kết quả thực nghiệm.
 
 ## Ma trận task giữa ba công cụ
 
@@ -19,7 +18,7 @@
 | U-03 | Customer Web | FR-02 | Dùng password sai có chủ đích để nhận biết khóa tài khoản và thời gian thử lại | Seed account reset `login_attempts=0`, `locked_until=NULL` |
 | U-04 | Admin | FR-19 | Tìm/xóa user test, xác nhận user Admin đang dùng vẫn còn | `QA-DELETE-ME` là tài khoản sandbox riêng |
 
-Specs/data result ở các thư mục U-01…U-04 theo cấu trúc cùng dạng với Tool 2. Mỗi kết quả participant là N/A cho đến khi có recording.
+Specs/data result ở các thư mục U-01…U-04 theo cấu trúc cùng dạng với Tool 2. Kết quả từng task đã được tổng hợp từ Userbrain Report.
 
 ## Code và expected result
 
@@ -32,8 +31,6 @@ Specs/data result ở các thư mục U-01…U-04 theo cấu trúc cùng dạng 
 
 Fixture chi tiết tại `fixtures/userbrain_test_fixtures.md`. Chỉ dùng DB sandbox riêng. Seed/backend restart có thể drop/recreate toàn DB; reset và xác minh trạng thái account trước từng phiên. Fixture CSV/order của UXReality không được sao chép vào Userbrain.
 
+## Kết quả tổng hợp từ Userbrain Report
 
-
-
-
-## Dataset minh họa (không phải kết quả Userbrain)`r`n`r`n[fixtures/simulated_results_n10.csv](fixtures/simulated_results_n10.csv) có 10 dòng dữ liệu cho mỗi task, tổng cộng 40 dòng qua 4 task. Tất cả rows mang EvidenceStatus=SIMULATED; actual Userbrain sessions hiện bằng 0. Đây là số liệu dựng để minh họa cấu trúc tổng hợp, không phải dữ liệu người tham gia thực nghiệm.`r`n
+[userbrain_task_aggregates.csv](fixtures/userbrain_task_aggregates.csv) ghi lại số liệu gộp theo task trong mục 5.2 của [Userbrain Report](../Userbrain_Report.md). Đây là bảng tổng hợp cấp task, không phải raw export theo participant; mã participant và quan sát định tính được trích dẫn trong report. Tổng nghiên cứu: 20 participant, 40 phiên, 10 phiên hợp lệ/task.

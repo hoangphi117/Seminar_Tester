@@ -1,7 +1,5 @@
 ﻿# U-04 — Tìm và xóa người dùng test, giữ tài khoản Admin
 
-> Userbrain / EShop — đặc tả trước pilot; đây không phải kết quả participant.
-
 - **ID / FR:** U-04 / FR-19
 - **Vai trò:** Admin
 - **Prompt participant:** Trong danh sách người dùng, tìm QA-DELETE-ME, xác nhận thông tin tài khoản, rồi xóa người dùng test đó. Sau cùng xác nhận tài khoản quản trị bạn đang dùng vẫn hoạt động.
@@ -17,5 +15,5 @@ GET admin/users trả trường không có password nhưng chỉ authenticateTok
 
 ## Thu thập dữ liệu
 
-Ghi outcome, thời lượng nếu Userbrain/recording cho phép, observable errors, assistance (nếu moderated), perceived difficulty và timestamp/evidence. Khi chưa có session, ghi N/A; không suy đoán participant response.
+Ghi outcome, thời lượng nếu Userbrain/recording cho phép, observable errors, assistance (nếu moderated), perceived difficulty và timestamp/evidence. Kết quả thực nghiệm tổng hợp theo task được ghi tại file Task_Data_Result và Userbrain Report. Không suy rộng expected behavior thành participant evidence.
 

@@ -1,6 +1,5 @@
 ﻿# Userbrain Test Data — Fixture Set v1
 
-> Dữ liệu giả lập cho sandbox U-01…U-04; không phải kết quả participant. Không lưu mật khẩu thật hoặc token.
 
 | Task | Fixture | Dữ liệu / trạng thái ban đầu | Reset |
 |---|---|---|---|

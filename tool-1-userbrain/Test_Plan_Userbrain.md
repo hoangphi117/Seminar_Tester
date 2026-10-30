@@ -30,7 +30,7 @@ Fixture cụ thể ở `task-specification/fixtures/userbrain_test_fixtures.md`.
 
 - U-01/U-02/U-04 dùng người phù hợp với vai trò; nếu participant Admin đại diện chưa quen EShop Admin thì ghi rõ.
 - U-03 dùng người có thể thực hiện task website cơ bản; login form khởi đầu sẵn, không yêu cầu đăng ký/reset password.
-- Đề xuất 3–5 phiên hợp lệ mỗi task cho nghiên cứu khám phá. Báo cáo N riêng theo task; không suy rộng thống kê.
+- Nghiên cứu đã báo cáo 10 phiên hợp lệ mỗi task (20 participant, mỗi người thực hiện 2 task theo vai trò). Xem [Userbrain Report](Userbrain_Report.md); không suy rộng mẫu khám phá thành đại diện thống kê.
 - Dùng participant IDs ẩn danh.
 
 ## 5. Môi trường và reset
@@ -54,8 +54,8 @@ Ghi outcome Success/Partial/Fail/Invalid, completion time nếu xác định đ�
 5. Reset dữ liệu trước participant tiếp theo; phân biệt findings `UT`, `HE`, `BOTH`.
 6. Tổng hợp participant data riêng với code/SRS baseline.
 
-## 8. Go/no-go / giới hạn
+## 8. Go/no-go / giới hạn và retest
 
-No-go nếu môi trường hoặc role sai, URL mất ổn định, account U-03 đã có attempts/lock, fixture U-04 thiếu, hoặc không thể reset. Code hiện được đọc tĩnh; UI behavior phải pilot xác nhận. FR-12 findings usability không chứng minh API an toàn. Không thay đổi tiêu chí sau khi bắt đầu session chính thức.
+Các phiên nghiên cứu đã hoàn thành theo tổng hợp trong report. Với retest, không chạy nếu môi trường hoặc role sai, URL mất ổn định, account U-03 còn attempts/lock, fixture U-04 thiếu, hoặc không thể reset. Findings usability không thay thế kiểm thử API/bảo mật. Không thay đổi tiêu chí sau khi bắt đầu phiên retest.
 
 

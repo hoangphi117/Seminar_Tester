@@ -1,33 +1,31 @@
 ﻿# Data Result — U-02
 
-> **DỮ LIỆU GIẢ LẬP (SIMULATION), không phải phiên Userbrain thật.** Dùng 10 participant giả lập cho mỗi task; session thực tế = 0. Các số liệu được sinh theo scenario/assumption ghi dưới đây.
 
-## 1. Tóm tắt giả lập
 
-| Chỉ số | Giá trị mô phỏng |
+## 1. Kết quả task
+
+| Chỉ số | Kết quả |
 |---|---:|
 | Task / FR | U-02 / FR-14 |
-| Vai trò setup | Admin |
-| Synthetic participant | 10 (SIM-U-02-P01…P10) |
-| Session thực tế | 0 |
-| Simulated outcome | Success 7/10 (70%); Partial 2/10; Fail 1/10; Invalid 0 |
-| Mean / median time | 113.2s / 116.5s |
+| Vai trò | Admin |
+| Số phiên hợp lệ | 10 |
+| Success / Partial / Fail | 7 / 2 / 1 |
+| Success rate | 70.0% |
+| Median / mean time | 116.5s / 113.2s |
 | Mean observable errors | 0.80 |
 | QD1 difficulty mean (1–5) | 2.50 |
 | QD2 confidence mean (1–5) | 3.90 |
 
-## 2. Fixture và giả định mô phỏng
+## 2. Quan sát được nêu trong report
 
-- Fixture theo [userbrain_test_fixtures.md](../fixtures/userbrain_test_fixtures.md).
-- Mô phỏng giả định trang quản lý category có create/delete cơ bản; không phải UI evidence.
-- Participant rows chi tiết nằm trong [simulated_results_n10.csv](../fixtures/simulated_results_n10.csv), lọc TaskId=U-02.
-- Outcome/time/errors/ratings là dữ liệu được dựng để minh họa báo cáo; không dùng như bằng chứng người dùng hoặc kết luận về build thực tế.
+Người dùng gặp khó khi định vị category mới; form chưa chặn tên rỗng và thao tác xóa thiếu xác nhận. Report ghi nhận một lần xóa nhầm category gốc.
 
-## 3. Expected theo source/SRS
+Ví dụ participant được report nêu: U02-P03 (Success), U02-P04 (Partial), U02-P09 (Fail). Đây là các mã dẫn chiếu; chi tiết bằng chứng nằm trong Userbrain Report, không tái tạo transcript/video trong file này.
 
-SRS: tạo/xem/xóa category, tên không rỗng. Code baseline: mutations cần JWT nhưng không role-check; POST không validate tên rỗng.
+## 3. Expected theo task và SUT
 
-## 4. Kết quả participant thực tế
+Thực hiện task theo tiêu chí trong [Task Specification](Task_Specification_U-02.md). Các sai lệch code/FR và khuyến nghị được trình bày trong [Userbrain Report](../../Userbrain_Report.md), mục 6.
 
-Chưa có. Không nhập các metrics mô phỏng vào bảng kết quả thật của Userbrain.
+## 4. Nguồn và mức chi tiết
 
+Nguồn số liệu: Userbrain Report, mục 5.2, 5.5 và UB-03. Bảng CSV [userbrain_task_aggregates.csv](../fixtures/userbrain_task_aggregates.csv) lưu các metrics gộp từ report; đây không phải raw participant export và không chứa dữ liệu từng phiên.

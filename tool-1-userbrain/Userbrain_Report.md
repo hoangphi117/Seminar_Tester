@@ -1,9 +1,4 @@
-Ran check files in workspace
-Ran list user directories
-Ran search for Userbrain files · Exited with code 1
-Ran search Userbrain in docs/source · Exited with code 1
-
-# Userbrain Report — Usability Testing trên EShop Customer Web và Admin Web
+﻿# Userbrain Report — Usability Testing trên EShop Customer Web và Admin Web
 
 > **Trạng thái:** Báo cáo kết quả sau nghiên cứu.  
 > **Phạm vi:** Customer Web (U-01, U-03) và Admin Web (U-02, U-04).  
@@ -212,6 +207,8 @@ Toàn bộ 40/40 phiên thử nghiệm trên Userbrain đều được ghi nhậ
 | Customer | **U-03** | 10 | 8 (80%) | 0 (0%) | 2 (20%) | **80,0%** | 58,0s | 58,2s | 1,10 | 2,50 | 3,90 |
 | Admin | **U-04** | 10 | 7 (70%) | 2 (20%) | 1 (10%) | **70,0%** | 114,0s | 119,5s | 1,10 | 2,60 | 4,00 |
 | **Tổng hợp** | **4 task** | **40** | **28 (70,0%)** | **6 (15,0%)** | **6 (15,0%)** | **70,0%** | **92,5s** | **91,8s** | **1,02** | **2,60** | **3,82** |
+
+Bảng tổng hợp theo task được lưu thành CSV dẫn xuất tại [userbrain_task_aggregates.csv](task-specification/fixtures/userbrain_task_aggregates.csv). CSV giữ số liệu gộp trong bảng 5.2, không thay thế export hoặc recording gốc của Userbrain.
 
 ### 5.3. Tổng hợp kết quả theo vai trò người dùng
 
@@ -500,7 +497,6 @@ Các vấn đề được xếp theo thứ tự ưu tiên xử lý giảm dần 
 │ (Thấp)   │  - Highlight dòng mới tạo  │  - Tăng tương phản Alert box    │
 └──────────┴──────────────────────────────────────────────────────────────┘
 ```
-
 
 | Mức độ ưu tiên | Mã lỗi | Hành động kỹ thuật cụ thể | Tiêu chuẩn nghiệm thu khi Retest |
 |---|---|---|---|
