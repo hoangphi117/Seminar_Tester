@@ -1,76 +1,71 @@
-# Đặc tả Task — M-08: Khôi phục mật khẩu qua OTP & Đánh giá phân cấp thị giác nút điều hướng
+# Đặc tả Task — M-08: Khám phá thông tin chi tiết sản phẩm & Đánh giá khả năng phục hồi khi gặp trang trống
 
-> **Vai trò:** Mobile Customer (Quên thông tin đăng nhập)
+> **Vai trò:** Mobile Customer
 > **Phạm vi:** Mobile App (React Native / Expo)
-> **Nguồn:** EShop FR-02, FR-20
-> **Trọng tâm kiểm thử Usability:** Đánh giá mức độ rõ ràng của cấu trúc phân cấp thị giác (Visual Hierarchy), khả năng phân biệt giữa hành động chính (Primary Action) và hành động hủy/quay lại (Cancel/Dismiss), cùng khả năng tương tác với ô nhập mã OTP trên di động. Không có lỗi logic mã nguồn.
+> **Nguồn:** EShop FR-05, FR-20
+> **Trọng tâm kiểm thử Usability:** Đánh giá khả năng quét thông tin (Information Scannability), nhận diện cử chỉ đa phương tiện (Media Affordance) và khả năng kiểm soát/phục hồi của người dùng khi truy cập vào một sản phẩm không tồn tại (Dead-End State / Trap Navigation). Kiểm thử thuần khả năng sử dụng, không chứa bug logic.
 
 ## 1. Thông tin chung
 
 - **Task ID:** M-08
-- **Tên task:** Khôi phục mật khẩu qua OTP & Đánh giá phân cấp thị giác nút điều hướng
+- **Tên task:** Khám phá thông tin chi tiết sản phẩm & Đánh giá khả năng phục hồi khi gặp trang trống
 - **Vai trò:** Mobile Customer
-- **FR liên quan:** FR-02, FR-20
-- **UI/UX principles dự kiến:** P2 (Clarity & Affordance), P3 (Visual Hierarchy), P5 (Feedback & Guidance)
-- **Nielsen heuristics dự kiến:** N1 (Visibility of system status), N4 (Consistency and standards), N7 (Flexibility and efficiency of use)
-- **Priority:** P1
+- **FR liên quan:** FR-05, FR-20
+- **UI/UX principles dự kiến:** P2 (Clarity & Affordance), P3 (Visual Hierarchy), P8 (Error Prevention & Recovery)
+- **Nielsen heuristics dự kiến:** N1 (Visibility of system status), N3 (User control and freedom), N8 (Aesthetic and minimalist design), N9 (Help users recognize and recover from errors)
+- **Priority:** P2
 - **Phiên bản task:** v1.0
 - **Môi trường:** Mobile App (Expo Go); backend tại IP LAN 192.168.10.13:3000
 
 ## 2. User task
 
-> Bạn không nhớ mật khẩu tài khoản `customer@eshop.com`. Hãy chọn tính năng "Quên mật khẩu?" tại màn hình đăng nhập, yêu cầu nhận mã OTP qua email, sau đó nhập mã OTP được cấp và thiết lập mật khẩu mới để lấy lại quyền truy cập tài khoản.
+> Phần 1: Từ màn hình chính, bạn hãy bấm vào xem chi tiết sản phẩm "Bàn phím cơ Keychron Q1", tìm đọc thông số kỹ thuật và quan sát hình ảnh sản phẩm.
+> Phần 2: Sau đó, thử bấm vào một mục sản phẩm đặc biệt trong danh mục khuyến mãi (được thiết lập dữ liệu trống/đã hết hàng) và tìm cách quay trở lại danh sách sản phẩm ban đầu để tiếp tục mua sắm.
 
 ## 3. Điều kiện ban đầu (Preconditions)
 
-- **Trạng thái đăng nhập:** Chưa đăng nhập.
-- **Trạng thái màn hình:** Đang ở màn hình Đăng nhập (Login Screen).
-- **Tài khoản thử nghiệm:** `customer@eshop.com`.
-- **Mã OTP mô phỏng trên testbed:** Khi gửi yêu cầu, backend sinh mã OTP và hiển thị hoặc gửi về hộp thư test (ví dụ mã mặc định `1234`).
+- **Trạng thái đăng nhập:** Tùy ý (đã hoặc chưa đăng nhập).
+- **Trạng thái màn hình:** Đang ở màn hình Danh sách sản phẩm (Home Screen).
+- **Dữ liệu chuẩn bị:** Sản phẩm ID 2 (Keychron Q1) có đầy đủ dữ liệu; một đường dẫn/nút thử nghiệm mở sản phẩm ID rỗng (ID 999 hoặc object `{}`) mô phỏng sản phẩm bị ẩn hoặc lỗi liên kết.
 
 ## 4. Tiêu chí thành công
 
 | ID | Điều kiện cần quan sát | Loại | Cách xác minh |
 |---|---|---|---|
-| SC-01 | Người tham gia chạm đúng nút "Quên mật khẩu?" tại màn hình Đăng nhập | Navigation | Chuyển đến màn hình Quên Mật Khẩu bước 1 |
-| SC-02 | Người tham gia nhập email và bấm "Lấy mã OTP" | Action | Hệ thống chuyển sang bước 2 hiển thị ô nhập OTP và mật khẩu mới |
-| SC-03 | Người tham gia nhập mã OTP và mật khẩu mới | Form Input | Hoàn tất điền cả 2 trường thông tin |
-| SC-04 | Người tham gia phân biệt đúng và chạm nút "Đặt lại mật khẩu" mà KHÔNG bấm nhầm vào nút "← Quay lại" | Usability / Visual Hierarchy | Chạm chính xác nút Primary Action, không bấm nhầm nút Cancel cùng màu |
-| SC-05 | Người tham gia hoàn tất đổi mật khẩu thành công | Outcome | Nhận thông báo "Đổi mật khẩu thành công!" và quay lại màn hình Login |
+| SC-01 | Người tham gia mở thành công màn hình Chi tiết sản phẩm Keychron Q1 | Navigation | Giao diện hiển thị chi tiết sản phẩm với ảnh, giá, mô tả |
+| SC-02 | Người tham gia định vị và đọc được thông tin mô tả chi tiết sản phẩm | Scannability | Tìm đúng thông tin đặc tính bàn phím trong khối mô tả |
+| SC-03 | Người tham gia nhận biết chất lượng hiển thị hình ảnh (tỉ lệ ảnh có bị méo mó hay không) | Visual / Affordance | Đánh giá hình ảnh hiển thị qua `resizeMode` |
+| SC-04 | Người tham gia truy cập sản phẩm rỗng và cố gắng tìm cách thoát/quay lại màn hình chính | User Control & Freedom | Quan sát phản ứng khi gặp màn hình thông báo trắng trơn không có nút Back |
 
 **Phân loại kết quả task:**
-- **Success:** Hoàn thành đầy đủ từ SC-01 đến SC-05, bấm chuẩn xác nút "Đặt lại mật khẩu" ngay lần đầu tiên.
-- **Partial:** Bị bấm nhầm vào nút "← Quay lại" (do 2 nút cùng màu xanh lục và cùng kích thước), làm mất dữ liệu OTP/mật khẩu vừa gõ và phải thực hiện lại bước 1.
-- **Fail:** Bấm nhầm nút "← Quay lại" nhiều lần hoặc bối rối không biết mã OTP có hiệu lực bao lâu nên dừng kịch bản.
-- **Invalid:** Backend không phản hồi dịch vụ OTP.
+- **Success:** Hoàn thành xem chi tiết sản phẩm; khi gặp màn hình trống, người tham gia nhận biết tình trạng ngõ cụt và sử dụng thanh điều hướng trên cùng (NavBar brand logo/Home link) để thoát ra an toàn.
+- **Partial:** Bối rối trước màn hình trống, phải vuốt mép màn hình (Back gesture) nhiều lần nhưng không có phản hồi, mất hơn 30s mới tìm thấy logo trên thanh Header để bấm về Home.
+- **Fail:** Hoàn toàn bế tắc trước màn hình trắng trống rỗng, tưởng ứng dụng bị đóng băng (freeze/crash) và buộc phải tắt hẳn app (Force Close) để mở lại.
+- **Invalid:** Mất kết nối API.
 
 ## 5. Câu hỏi khảo sát sau task
 
-- **QD1:** Đánh giá mức độ dễ dàng khi thực hiện đặt lại mật khẩu (Thang 1 Rất dễ -> 5 Rất khó).
-- **QD2:** Mức độ tự tin khi bấm nút xác nhận (Thang 1 Rất không tự tin -> 5 Rất tự tin).
-- **Q06:** Bạn có nhận thấy hai nút "Đặt lại mật khẩu" và "← Quay lại" có màu sắc và kích thước giống hệt nhau không? Bạn có bị nhầm lẫn giữa hai nút này không?
-- **Q07:** Trường nhập OTP có dễ thao tác không? Bạn có mong muốn ô OTP tự động tách thành 4 ô vuông và tự nhận diện tin nhắn không?
-- **Q11, Q12:** Góp ý mở về bố cục các nút điều hướng.
+- **QD1:** Đánh giá mức độ dễ dàng khi đọc thông tin chi tiết sản phẩm (Thang 1 Rất dễ -> 5 Rất khó).
+- **QD2:** Mức độ dễ dàng khi muốn quay lại màn hình trước đó từ trang sản phẩm trống (Thang 1 Rất dễ -> 5 Rất khó).
+- **Q01:** Hình ảnh sản phẩm hiển thị trên màn hình có bị méo mó hay biến dạng tỉ lệ không?
+- **Q03:** Khi gặp màn hình thông báo "Sản phẩm không tồn tại", bạn có cảm thấy mình bị rơi vào ngõ cụt (Dead-end) không có đường thoát không?
+- **Q11, Q12:** Bạn mong muốn giao diện chi tiết sản phẩm cải tiến thêm những thành phần nào?
 
 ## 6. Ghi chú quan sát chuyên sâu cho Reviewer
 
-- **Trọng tâm Usability 1 — Vi phạm phân cấp thị giác nghiêm trọng (`App.js` dòng 876-887):**
+- **Trọng tâm Usability 1 — Bẫy điều hướng ngõ cụt (Dead-End Trap State - N3, N9):**
+  Trong `App.js` dòng 544-550:
   ```javascript
-  <TouchableOpacity
-    style={styles.greenButton}
-    onPress={handleResetPassword}
-  >
-    <Text style={styles.buttonText}>Đặt lại mật khẩu</Text>
-  </TouchableOpacity>
-  <TouchableOpacity
-    style={styles.greenButton}
-    onPress={() => setForgotStep(1)}
-  >
-    <Text style={styles.buttonText}>← Quay lại</Text>
-  </TouchableOpacity>
+  if (Object.keys(product).length === 0) {
+    return renderScreen(
+      <View style={styles.padded}>
+        <Text>Sản phẩm không tồn tại (Lỗi trắng trang do data rỗng)</Text>
+      </View>,
+    );
+  }
   ```
-  Nút chính (Primary CTA) và nút phụ (Secondary Action / Hủy) đều mang cùng màu xanh lục `#10b981`, cùng chiều cao, cùng độ rộng full-width, đặt xếp chồng sát nhau. Đây là lỗi thiết kế kinh điển vi phạm nguyên tắc **Visual Hierarchy (P3)** và **Nielsen N4 (Consistency & Standards)**.
-- **Trọng tâm Usability 2 — Thiếu Affordance và tính năng hiện đại của trường OTP (N7):**
-  Ô nhập OTP chỉ là một `TextInput` thông thường, không có layout chia 4 ô số (Digit OTP blocks), không có cơ chế `textContentType="oneTimeCode"` để tự động điền mã xác thực.
-- **Trọng tâm Usability 3 — Thiếu đồng hồ đếm ngược gửi lại OTP (N1):**
-  Hệ thống không hiển thị thời gian mã OTP hết hạn hoặc đồng hồ đếm ngược cho phép gửi lại mã (Resend countdown).
+  Khi sản phẩm rỗng, app render một `View` chỉ chứa duy nhất một dòng `Text` thông báo, **hoàn toàn không có nút "Quay lại", không có nút "Tiếp tục mua hàng", không hỗ trợ gesture vuốt để Back**. Đây là vi phạm nghiêm trọng nguyên tắc **Nielsen N3: User Control & Freedom** (Bẫy người dùng vào trạng thái bế tắc).
+- **Trọng tâm Usability 2 — Trải nghiệm hiển thị ảnh sản phẩm (P2, N8):**
+  Thuộc tính `resizeMode="stretch"` kéo dãn hình ảnh để lấp đầy khung 240dp, làm méo mó tỉ lệ gốc của sản phẩm phần cứng công nghệ. Thiếu chỉ báo vuốt ảnh (Carousel indicators).
+- **Trọng tâm Usability 3 — Bố cục thông tin dạng khối thô (P3):**
+  Toàn bộ mô tả kỹ thuật bị dồn vào một thẻ `<Text>` không phân đoạn tab (Tổng quan / Thông số / Đánh giá), gây mệt mỏi thị giác khi đọc trên màn hình di động hẹp.

@@ -9,12 +9,11 @@
 | Số người (n) | 7 |
 | Môi trường | Expo Go; đăng nhập customer@eshop.com; giỏ hàng AirPods x2 = 12.000.000 đ; coupon SAVE10 chưa dùng |
 
-### Ghi chú SUT — Bug nghiêm trọng
+### Ghi chú SUT — Phân tích khiếm khuyết Usability Luồng Checkout
 
-- **Bug mất sản phẩm cuối (handleConfirmCheckout):** `cart.slice(0, -1)` — nếu giỏ >= 2 món thì đơn hàng tạo ra bị mất món cuối cùng.
-  - Trong task này chỉ có 1 loại sản phẩm (AirPods x2) => bug này không kích hoạt ở phiên này vì `cart.length = 1`, app gửi cart nguyên vẹn (`cart.length > 1 ? cart.slice(0, -1) : cart`).
-  - Ghi nhận lỗi nghiêm trọng để kiến nghị fix ngay cho các đơn hàng nhiều món.
-- **Công thức coupon SAVE10:** 12.000.000 * 10% = 1.200.000 đ giảm; còn 10.800.000 đ. Backend tính đúng.
+- **Đứt gãy giỏ hàng khi bắt buộc đăng nhập:** Người dùng chưa đăng nhập bấm thanh toán bị chuyển hướng sang màn hình Login; nếu không lưu trạng thái giỏ vào bộ nhớ tạm (`AsyncStorage`), người dùng có nguy cơ bị mất trắng sản phẩm đã chọn (N3, N5).
+- **Thiếu màn hình rà soát đơn hàng cuối cùng (Order Review):** Giao diện thiếu bước tóm tắt chi tiết trước khi gửi lệnh đặt hàng, người dùng không thể kiểm tra lại địa chỉ giao hàng và phương thức thanh toán trước khi bấm xác nhận (N5, P10).
+- **Tính toán coupon SAVE10:** Giảm đúng 10% (12.000.000 đ giảm 1.200.000 đ còn 10.800.000 đ). Người dùng cần nhìn thấy rõ số tiền được trừ để an tâm thanh toán.
 
 ## 2. Kết quả từng người
 
