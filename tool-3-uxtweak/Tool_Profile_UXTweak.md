@@ -14,7 +14,7 @@
 ### Định vị phân công trong đề tài Seminar:
 Để tránh trùng lặp nội dung và tối ưu hóa tài nguyên nghiên cứu, toàn bộ hệ thống EShop được phân định kiểm thử rõ ràng giữa hai công cụ:
 * **Tool 2 (UXReality):** Chuyên trách đánh giá 2 phân hệ Web trên máy tính — **Customer Web** và **Admin Web** (8 task kiểm thử).
-* **Tool 3 (UXTweak):** Chuyên trách đánh giá phân hệ **Mobile App (React Native / Expo)** (9 task kiểm thử trọng tâm: 6 kịch bản hành trình mua sắm cốt lõi và 3 kịch bản chuyên sâu kiểm thử Usability), đánh giá hành vi người dùng trên màn hình cảm ứng di động.
+* **Tool 3 (UXTweak):** Chuyên trách đánh giá phân hệ **Mobile App (React Native / Expo)** (8 task kiểm thử Usability trọng tâm, tập trung 100% vào trải nghiệm người dùng và công thái học cảm ứng), đánh giá hành vi người dùng trên màn hình cảm ứng di động.
 
 > **Lưu ý nguyên tắc:** UXTweak không thay thế các công cụ kiểm thử chức năng tự động (Functional Automation Test) hay kiểm thử API/CSDL, mà tập trung vào **hiệu quả tương tác, tính dễ dùng và độ mượt mà trong trải nghiệm của người dùng thật**.
 
