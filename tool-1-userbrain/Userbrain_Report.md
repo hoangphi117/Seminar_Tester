@@ -501,6 +501,7 @@ Các vấn đề được xếp theo thứ tự ưu tiên xử lý giảm dần 
 └──────────┴──────────────────────────────────────────────────────────────┘
 ```
 
+
 | Mức độ ưu tiên | Mã lỗi | Hành động kỹ thuật cụ thể | Tiêu chuẩn nghiệm thu khi Retest |
 |---|---|---|---|
 | **P0 — Urgent** | **UB-01** | Bổ sung Middleware kiểm tra `req.user.role === 'admin'`; Frontend route guard chuyển hướng ngay sang trang `403 Forbidden` chuyên dụng kèm nút quay về. | 100% người dùng Customer bị chặn ngay lập tức; không còn hiện tượng bảng trắng; Success Rate ≥ 90%. |
