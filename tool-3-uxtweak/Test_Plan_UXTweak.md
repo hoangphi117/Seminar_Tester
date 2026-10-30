@@ -99,13 +99,17 @@ Tham chiếu: <https://www.nngroup.com/articles/ten-usability-heuristics/>.
 
 ## 6. Người tham gia
 
-| Nhóm | Số lượng | ID | Điều kiện tham gia |
-|---|---|---|---|
-| Customer Web | 6 | C-P01 → C-P06 | Từng dùng ít nhất một trang thương mại điện tử |
-| Admin Web | 6 | A-P01 → A-P06 | Có kinh nghiệm với giao diện quản trị web |
-| Mobile App | 6 | M-P01 → M-P06 | Có smartphone và quen dùng app mua sắm mobile |
+Nghiên cứu áp dụng thiết kế nội nhóm (**Within-subjects design**): Cùng một nhóm người tham gia sẽ thực hiện các bài kiểm thử trên cả 3 phân hệ (Customer Web, Mobile App và Admin Web). Thiết kế này phù hợp với điều kiện thực tế của đồ án/seminar, đồng thời cho phép so sánh trực tiếp cảm nhận của cùng một người dùng trên 2 kênh mua sắm Web vs Mobile.
 
-Tổng cộng: **18 người tham gia**, **72 task sessions** (12 task × 6 người mỗi nhóm).
+| Người tham gia | Mã định danh | Điều kiện & Đặc điểm |
+|---|---|---|
+| 7 người dùng thực tế | P01 → P07 | Có smartphone cá nhân, thường xuyên mua sắm online, có kỹ năng sử dụng máy tính và web cơ bản. |
+
+- **Phân bổ vai trò trong phiên:**
+  - Khách hàng Customer Web (C-P01 → C-P07): Thực hiện 4 task C-01 → C-04.
+  - Quản trị viên Admin Web (A-P01 → A-P07): Thực hiện 4 task A-01 → A-04.
+  - Khách hàng Mobile App (M-P01 → M-P07): Thực hiện 4 task M-01 → M-04.
+- **Tổng cộng:** **7 người tham gia**, thực hiện tổng cộng **84 task sessions** (12 task × 7 người).
 
 ## 7. Môi trường kiểm thử
 
