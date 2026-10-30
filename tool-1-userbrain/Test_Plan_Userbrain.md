@@ -1,7 +1,5 @@
 ﻿# Test Plan — Userbrain cho EShop Web
 
-> Trạng thái: kế hoạch trước pilot, chưa có kết quả participant. Phiên bản 4.0.
-> Dùng cấu trúc task folders như Tool 2: `task-specification/README.md`, từng `U-xx` có spec/result, và thư mục `fixtures`.
 
 ## 1. Mục tiêu
 
