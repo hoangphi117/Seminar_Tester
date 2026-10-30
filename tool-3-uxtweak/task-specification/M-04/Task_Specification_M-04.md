@@ -36,7 +36,7 @@
 
 **Kết quả task:**
 - Success: Đạt cả 3 tiêu chí SC-01, SC-02, SC-03.
-- Partial: Đăng nhập và áp mã được nhưng gặp khó khăn ở khâu nhập thông tin giao hàng (SĐT / địa chỉ) hoặc phát hiện bug mất item cuối.
+- Partial: Đăng nhập và áp mã được nhưng gặp khó khăn ở khâu nhập thông tin giao hàng (SĐT / địa chỉ) hoặc gặp bất tiện khi bị bắt đăng nhập làm gián đoạn luồng mua sắm.
 - Fail: Không thanh toán được hoặc thất bại ở bước xác thực.
 - Invalid: Mất kết nối API backend trong lúc tạo đơn.
 
@@ -48,4 +48,4 @@
 
 ## 6. Ghi chú quan sát cho Reviewer
 
-- Kiểm tra xem người dùng có nhập đúng định dạng số điện thoại (10 chữ số) không; quan sát phản ứng khi gặp bug `slice(0, -1)` khiến đơn hàng tạo ra bị mất sản phẩm cuối cùng.
+- Kiểm tra xem người dùng có nhập đúng định dạng số điện thoại (10 chữ số) không; quan sát trải nghiệm chuyển đổi khi yêu cầu đăng nhập và tính minh bạch của thông tin giảm giá.

@@ -9,10 +9,11 @@
 | Số người (n) | 7 |
 | Môi trường | Expo Go; giỏ hàng setup trước với AirPods x2 + Keychron x1 |
 
-### Ghi chú SUT — Bug nghiêm trọng
+### Ghi chú SUT — Phân tích khiếm khuyết Usability & Trở ngại tương tác
 
-- **Bug số lượng tự cộng 1 (App.js, renderCart):** `parsed + 1` — gõ 3 ra 4, gõ 2 ra 3. Bug xác nhận 100% qua code review.
-- **Xóa không xác nhận:** `removeFromCart` trực tiếp, không có Alert/Dialog hỏi lại — vi phạm nguyên tắc an toàn thao tác.
+- **Thiếu bộ điều khiển Stepper (+ / -) trên cảm ứng:** Ô nhập số lượng chỉ là một `TextInput` nhỏ, người dùng buộc phải chạm vào ô hẹp, đợi bàn phím số nảy lên, xóa số cũ rồi gõ số mới; hoàn toàn thiếu cặp nút bấm tăng/giảm nhanh bằng 1 chạm theo chuẩn thiết kế di động (N7, P7).
+- **Nút Xóa thiếu rào cản phòng ngừa lỗi (N5, N3):** Nút "Xóa" màu đỏ nằm ngay sát mép thẻ sản phẩm, khi chạm vào là xóa món hàng ngay lập tức mà không có Dialog xác nhận hay nút Hoàn tác (Undo), rất dễ gây xóa nhầm khi vuốt cuộn màn hình.
+- **Ma sát nhận thức nghiêm trọng (Cognitive Friction):** Hệ thống không phản hồi chính xác giá trị người dùng vừa gõ (nhảy số lượng `parsed + 1`), khiến người dùng mất phương hướng, bối rối và xóa đi gõ lại nhiều lần.
 
 ## 2. Kết quả từng người
 
