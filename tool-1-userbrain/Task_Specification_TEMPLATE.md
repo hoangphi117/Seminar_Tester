@@ -1,5 +1,6 @@
 ﻿# Task Specification — Userbrain / EShop
 
+
 > Task catalog Userbrain sau đối chiếu trùng lặp với hai công cụ khác. Mỗi task có spec và data result riêng trong folder `task-specification/U-xx`.
 
 | Task ID | File | Vai trò | FR | Mục tiêu | Priority |
